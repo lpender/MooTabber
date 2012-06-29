@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>MooTabber Demo</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+    <script type="text/javascript" src="assets/mootools-core-1.3.2.js"></script>
+    <script type="text/javascript" src="assets/mootools-more-1.3.2.1.js"></script>
+    <script type="text/javascript" src="assets/tabber.js"></script>
+</head>
+<body>
+<ul class="main-menu">
+    <li id="ajax" class="tab button">Ajax</li>
+    <li id="iframe" class="tab button">iFrame</li>
+    <li id="slideshow" class="tab button">Slideshow</li>
+</ul>
+
+<div id="pane-ajax">
+    Please note that Ajax Mode may not work, subject to your local server settings.
+    <ul id="ajax-menu">
+        <li class="button"><a class="tab" href="assets/html/demoPage1.html">Page 1 (Internal)</a></li>
+        <li class="button"><a class="tab" href="assets/html/demoPage2.html">Page 2 (Internal)</a></li>
+        <li class="button"><a class="tab" href="http://www.google.com">Google (External)</a></li>
+    </ul>
+    <div id="ajaxContent"></div>
+</div>
+<div id="pane-iframe">
+    <ul id="iframe-menu">
+        <li class="button"><a class="tab" href="assets/html/demoPage1.html">Page 1 (Internal)</a></li>
+        <li class="button"><a class="tab" href="assets/html/demoPage2.html">Page 2 (Internal)</a></li>
+        <li class="button"><a class="tab" href="http://www.google.com">Google (External)</a></li>
+    </ul>
+    <iframe id="iframeContent"></iframe>
+</div>
+<div id="pane-slideshow">
+    <ul id="slideshow-menu">
+        <li class="button prev">Previous</li>
+        <li id="tab-1" class="button tab">First Tab</li>
+        <li id="tab-2" class="button tab">Second Tab</li>
+        <li class="button next">Next</li>
+    </ul>
+    <div class="slideshowContent" style="position:relative;">  <!-- Be sure to make a container for your slideshow content that is position:relative or absolute -->
+        <div id="pane-tab-1"><img src="http://www.argh.org/i/google-suche-jetzt.png"/></div>
+        <div id="pane-tab-2"><img src="http://farm2.static.flickr.com/1126/3173008391_640db6a329.jpg"/></div>
+    </div>
+</div>
+
+<script>
+
+
+
+    // Regular Tabber
+    new MooTabber($$('.main-menu')[0], {
+        testMode:true
+    });
+
+    // Ajax Tabber
+    new MooTabber($('ajax-menu'), {
+        testMode:true,
+        paneHolderId : 'ajaxContent',
+        loadMode: 'ajax',
+        selectParent: true
+    })
+
+    // iFrame Tabber
+    new MooTabber($('iframe-menu'), {
+        testMode:true,
+        paneHolderId : 'iframeContent',
+        loadMode: 'iframe',
+        selectParent: true
+    })
+
+    // Slideshow Tabber
+    new MooTabber($('slideshow-menu'), {
+        testMode:true,
+        mode: 'slideshow',
+        duration: 1000,
+        autoplay: true,
+        step:true
+    })
+
+</script>
+
+</body>
+</html>
